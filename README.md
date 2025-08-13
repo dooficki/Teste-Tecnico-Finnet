@@ -24,27 +24,53 @@
 
 ## 🔧 Instalação
 
-### 1. Clone o repositório
+### Opção 1: Docker 
+
+#### 1. Clone o repositório
 ```bash
 git clone [URL_DO_REPOSITORIO]
 cd Teste-Tecnico-Finnet
 ```
 
-### 2. Instale as dependências
+#### 2. Execute com Docker
+```bash
+# Construir e iniciar os containers
+docker-compose up -d
+
+# Instalar dependências do Composer
+docker-compose exec app composer install
+```
+
+#### 3. Acesse o sistema
+- **Aplicação:** http://localhost:8080
+- **phpMyAdmin:** http://localhost:8081
+- **Email:** admin@jubilut.com
+- **Senha:** admin123
+
+#### 4. Credenciais do banco
+- **Host:** db
+- **Database:** plataforma_ensino
+- **User:** root
+- **Password:** root123
+
+### Opção 2: Instalação Local
+
+#### 1. Clone o repositório
+```bash
+git clone [URL_DO_REPOSITORIO]
+cd Teste-Tecnico-Finnet
+```
+
+#### 2. Instale as dependências
 ```bash
 composer install
 ```
 
-### 3. Configure o banco de dados
+#### 3. Configure o banco de dados
 - Crie um banco de dados MySQL chamado `plataforma_ensino`
 - Configure as credenciais no arquivo `app/Config/Database.php`
 
-### 4. Execute as migrations
-```bash
-php migrations/run.php
-```
-
-### 5. Configure o servidor web
+#### 4. Configure o servidor web
 Configure seu servidor web para apontar para a pasta `public/`
 
 **Para Apache:**
@@ -57,12 +83,12 @@ DocumentRoot /caminho/para/projeto/public
 root /caminho/para/projeto/public;
 ```
 
-### 6. Acesse o sistema
+#### 5. Acesse o sistema
 - URL: `http://localhost`
 - **Email:** admin@jubilut.com
 - **Senha:** admin123
 
-## 🎮 Funcionalidades
+## Funcionalidades
 
 ### Autenticação
 - Sistema de login/logout

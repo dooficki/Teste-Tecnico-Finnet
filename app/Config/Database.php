@@ -9,10 +9,11 @@ class Database
 
     private function __construct()
     {
-        $host = 'localhost';
-        $dbname = 'plataforma_ensino';
-        $username = 'root';
-        $password = '';
+        // Docker
+        $host = $_ENV['DB_HOST'] ?? 'localhost';
+        $dbname = $_ENV['DB_NAME'] ?? 'plataforma_ensino';
+        $username = $_ENV['DB_USER'] ?? 'root';
+        $password = $_ENV['DB_PASS'] ?? '';
 
         try {
             $this->connection = new \PDO(

@@ -20,6 +20,7 @@ $routes = [
     'GET' => [
         '/' => ['App\Controllers\AuthController', 'loginForm'],
         '/login' => ['App\Controllers\AuthController', 'loginForm'],
+        '/logout' => ['App\Controllers\AuthController', 'logout'],
         '/dashboard' => ['App\Controllers\DashboardController', 'index'],
         '/areas' => ['App\Controllers\AreaController', 'index'],
         '/areas/create' => ['App\Controllers\AreaController', 'create'],

@@ -9,6 +9,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
+    background: #f8f9fa;
 }
 
 /* ===== LAYOUT PRINCIPAL ===== */
@@ -58,7 +59,7 @@ body {
 }
 
 .card-header {
-    background: #667eea;
+    background: #007bff;
     color: white;
     border-radius: 8px 8px 0 0 !important;
     border: none;
@@ -69,57 +70,12 @@ body {
     padding: 20px;
 }
 
-/* ===== CARDS DE ESTATÍSTICAS ===== */
-.border-left-primary {
-    border-left: 0.25rem solid #4e73df !important;
-}
-
-.border-left-success {
-    border-left: 0.25rem solid #1cc88a !important;
-}
-
-.border-left-info {
-    border-left: 0.25rem solid #36b9cc !important;
-}
-
-.border-left-warning {
-    border-left: 0.25rem solid #f6c23e !important;
-}
-
-.text-gray-300 {
-    color: #dddfeb !important;
-}
-
-.text-gray-800 {
-    color: #5a5c69 !important;
-}
-
 /* ===== BOTÕES ===== */
 .btn {
     border-radius: 6px;
     padding: 8px 16px;
     font-weight: 500;
     border: none;
-}
-
-.btn-primary {
-    background: #667eea;
-}
-
-.btn-success {
-    background: #28a745;
-}
-
-.btn-info {
-    background: #17a2b8;
-}
-
-.btn-warning {
-    background: #ffc107;
-}
-
-.btn-danger {
-    background: #dc3545;
 }
 
 /* ===== FORMULÁRIOS ===== */
@@ -130,26 +86,14 @@ body {
 }
 
 .form-control:focus {
-    border-color: #667eea;
-    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
 .form-label {
     font-weight: 600;
     color: #495057;
     margin-bottom: 8px;
-}
-
-.input-group-text {
-    background: #f8f9fa;
-    border: 1px solid #ced4da;
-    border-right: none;
-    border-radius: 6px 0 0 6px;
-}
-
-.input-group .form-control {
-    border-left: none;
-    border-radius: 0 6px 6px 0;
 }
 
 /* ===== TABELAS ===== */
@@ -160,7 +104,7 @@ body {
 }
 
 .table thead th {
-    background: #667eea;
+    background: #007bff;
     color: white;
     border: none;
     padding: 12px 15px;
@@ -195,7 +139,7 @@ body {
 
 /* ===== PÁGINA DE LOGIN ===== */
 .login-page {
-    background: #667eea;
+    background: #f8f9fa;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -205,15 +149,14 @@ body {
 
 .login-card {
     background: white;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     width: 100%;
 }
 
 .login-header {
-    background: #667eea;
+    background: #007bff;
     color: white;
     padding: 2rem;
     text-align: center;
@@ -224,7 +167,7 @@ body {
 }
 
 .btn-login {
-    background: #667eea;
+    background: #007bff;
     border: none;
     border-radius: 8px;
     padding: 12px;
@@ -262,30 +205,21 @@ body {
 
 /* ===== MODAIS ===== */
 .modal-content {
-    border-radius: 12px;
+    border-radius: 8px;
     border: none;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .modal-header {
-    background: #667eea;
+    background: #007bff;
     color: white;
-    border-radius: 12px 12px 0 0;
+    border-radius: 8px 8px 0 0;
     border: none;
 }
 
 .modal-footer {
     border-top: 1px solid #dee2e6;
     padding: 15px 20px;
-}
-
-/* ===== UTILITÁRIOS ===== */
-.shadow-custom {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.rounded-custom {
-    border-radius: 8px;
 }
 
 /* ===== RESPONSIVIDADE ===== */
@@ -315,84 +249,4 @@ body {
         left: 10px;
         min-width: auto;
     }
-}
-
-/* ===== LOADING ===== */
-.loading {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border: 3px solid #f3f3f3;
-    border-top: 3px solid #667eea;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* ===== BADGES ===== */
-.badge {
-    border-radius: 20px;
-    padding: 5px 12px;
-    font-size: 0.8rem;
-    font-weight: 500;
-}
-
-.badge-primary {
-    background: #667eea;
-}
-
-.badge-success {
-    background: #28a745;
-}
-
-.badge-warning {
-    background: #ffc107;
-}
-
-.badge-danger {
-    background: #dc3545;
-}
-
-/* ===== PAGINAÇÃO ===== */
-.pagination {
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.page-link {
-    border-radius: 5px;
-    margin: 0 2px;
-    border: none;
-    color: #667eea;
-}
-
-.page-link:hover {
-    background-color: #667eea;
-    color: white;
-}
-
-.page-item.active .page-link {
-    background: #667eea;
-    border: none;
-}
-
-/* ===== SEARCH E FILTROS ===== */
-.search-box {
-    position: relative;
-}
-
-.search-box .form-control {
-    padding-left: 40px;
-}
-
-.search-box i {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #6c757d;
 } 
