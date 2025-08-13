@@ -31,11 +31,21 @@ class Aluno
     {
         $stmt = $this->db->prepare("SELECT * FROM alunos WHERE id = ?");
         $stmt->execute([$id]);
-        return $stmt->fetch();
+        $result = $stmt->fetch();
+        return $result ?: null;
     }
 
     public function create($data)
     {
+        // Validações
+        if (empty($data['nome']) || empty($data['email'])) {
+            return false;
+        }
+        
+        if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+            return false;
+        }
+        
         $stmt = $this->db->prepare("INSERT INTO alunos (nome, email, data_nascimento) VALUES (?, ?, ?)");
         return $stmt->execute([$data['nome'], $data['email'], $data['data_nascimento']]);
     }

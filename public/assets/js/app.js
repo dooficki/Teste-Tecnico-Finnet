@@ -1,12 +1,12 @@
 // ===== FUNÇÕES GLOBAIS DA APLICAÇÃO =====
 
 $(document).ready(function() {
-    // Auto-hide flash messages after 5 seconds
+    // Ocultar mensagens flash automaticamente após 5 segundos
     setTimeout(function() {
         $('.flash-message').fadeOut();
     }, 5000);
 
-    // Form validation
+    // Validação de formulários
     $('.needs-validation').on('submit', function(event) {
         if (!this.checkValidity()) {
             event.preventDefault();
@@ -15,7 +15,7 @@ $(document).ready(function() {
         $(this).addClass('was-validated');
     });
 
-    // Confirm delete actions
+    // Confirmar ações de exclusão
     $('.btn-delete').on('click', function(e) {
         if (!confirm('Tem certeza que deseja excluir este item?')) {
             e.preventDefault();
@@ -23,7 +23,7 @@ $(document).ready(function() {
         }
     });
 
-    // Loading state for forms
+    // Estado de carregamento para formulários
     $('form').on('submit', function() {
         var $form = $(this);
         var $submitBtn = $form.find('button[type="submit"]');
@@ -33,14 +33,14 @@ $(document).ready(function() {
             $submitBtn.prop('disabled', true)
                       .html('<span class="loading"></span> Processando...');
             
-            // Re-enable after 10 seconds as fallback
+            // Reabilitar após 10 segundos como fallback
             setTimeout(function() {
                 $submitBtn.prop('disabled', false).text(originalText);
             }, 10000);
         }
     });
 
-    // Search functionality
+    // Funcionalidade de busca
     $('#searchInput').on('keyup', function() {
         var value = $(this).val().toLowerCase();
         $('.table tbody tr').filter(function() {
@@ -48,12 +48,12 @@ $(document).ready(function() {
         });
     });
 
-    // Toggle sidebar on mobile
+    // Alternar sidebar no mobile
     $('.sidebar-toggle').on('click', function() {
         $('.sidebar').toggleClass('show');
     });
 
-    // Close sidebar when clicking outside on mobile
+    // Fechar sidebar ao clicar fora no mobile
     $(document).on('click', function(e) {
         if ($(window).width() <= 768) {
             if (!$(e.target).closest('.sidebar, .sidebar-toggle').length) {
@@ -65,7 +65,7 @@ $(document).ready(function() {
 
 // ===== FUNÇÕES UTILITÁRIAS =====
 
-// Show alert message
+// Mostrar mensagem de alerta
 function showAlert(type, message) {
     var alertHtml = `
         <div class="alert alert-${type} alert-dismissible fade show flash-message" role="alert">
@@ -83,12 +83,12 @@ function showAlert(type, message) {
     }, 5000);
 }
 
-// Format date
+// Formatar data
 function formatDate(date) {
     return new Intl.DateTimeFormat('pt-BR').format(new Date(date));
 }
 
-// Validate email
+// Validar email
 function isValidEmail(email) {
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -96,7 +96,7 @@ function isValidEmail(email) {
 
 // ===== FUNÇÕES ESPECÍFICAS DO SISTEMA =====
 
-// Search students by name or email
+// Buscar alunos por nome ou email
 function searchStudents(query) {
     if (query.length < 2) return;
     
@@ -124,12 +124,12 @@ function searchStudents(query) {
     });
 }
 
-// Select student from search results
+// Selecionar aluno dos resultados da busca
 function selectStudent(studentId) {
-    console.log('Selected student:', studentId);
+    console.log('Aluno selecionado:', studentId);
 }
 
-// Load areas for select dropdown
+// Carregar áreas para dropdown de seleção
 function loadAreas() {
     $.ajax({
         url: '/api/areas',
@@ -146,7 +146,7 @@ function loadAreas() {
     });
 }
 
-// Calculate age from birth date
+// Calcular idade a partir da data de nascimento
 function calculateAge(birthDate) {
     var today = new Date();
     var birth = new Date(birthDate);

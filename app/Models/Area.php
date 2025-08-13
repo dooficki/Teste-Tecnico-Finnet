@@ -31,11 +31,17 @@ class Area
     {
         $stmt = $this->db->prepare("SELECT * FROM areas WHERE id = ?");
         $stmt->execute([$id]);
-        return $stmt->fetch();
+        $result = $stmt->fetch();
+        return $result ?: null;
     }
 
     public function create($data)
     {
+        // Validação
+        if (empty($data['titulo'])) {
+            return false;
+        }
+        
         $stmt = $this->db->prepare("INSERT INTO areas (titulo, descricao) VALUES (?, ?)");
         return $stmt->execute([$data['titulo'], $data['descricao']]);
     }

@@ -1,12 +1,5 @@
 <?php
 
-/**
- * Migration: Create Matriculas Table
- * 
- * Esta migration cria a tabela de matrículas
- * com foreign keys, constraints e suporte a UTF-8
- */
-
 class CreateMatriculasTable
 {
     public function up($db)

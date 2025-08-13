@@ -43,11 +43,23 @@ class Matricula
             WHERE m.id = ?
         ");
         $stmt->execute([$id]);
-        return $stmt->fetch();
+        $result = $stmt->fetch();
+        return $result ?: null;
     }
 
     public function create($data)
     {
+        // Validações
+        if (empty($data['aluno_id']) || empty($data['area_id'])) {
+            return false;
+        }
+        
+        // Verificar se já existe matrícula
+        $existing = $this->getByAlunoAndArea($data['aluno_id'], $data['area_id']);
+        if ($existing) {
+            return false;
+        }
+        
         $stmt = $this->db->prepare("INSERT INTO matriculas (aluno_id, area_id) VALUES (?, ?)");
         return $stmt->execute([$data['aluno_id'], $data['area_id']]);
     }
@@ -95,6 +107,7 @@ class Matricula
             WHERE m.aluno_id = ? AND m.area_id = ?
         ");
         $stmt->execute([$aluno_id, $area_id]);
-        return $stmt->fetch();
+        $result = $stmt->fetch();
+        return $result ?: null;
     }
 } 

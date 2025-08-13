@@ -97,7 +97,7 @@ class AreaTest extends TestCase
         $this->assertCount(2, $areas);
         
         $deletedArea = $this->areaModel->getById(1);
-        $this->assertFalse($deletedArea); // getById retorna false quando não encontra
+        $this->assertNull($deletedArea); // getById retorna null quando não encontra
     }
 
     public function testCountAreas()
@@ -133,14 +133,14 @@ class AreaTest extends TestCase
 
         $result = $this->areaModel->create($data);
         
-        // O modelo atual permite título vazio, então deve passar
-        $this->assertTrue($result);
+        // Deve falhar devido ao título vazio
+        $this->assertFalse($result);
     }
 
     public function testGetNonExistentArea()
     {
         $area = $this->areaModel->getById(999);
         
-        $this->assertFalse($area); // getById retorna false quando não encontra
+        $this->assertNull($area); // getById retorna null quando não encontra
     }
 } 

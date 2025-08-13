@@ -149,7 +149,9 @@ class AlunoTest extends TestCase
         $recent = $this->alunoModel->getRecent(1);
         
         $this->assertCount(1, $recent);
-        $this->assertEquals('Maria Santos', $recent[0]['nome']);
+        // Verificar se o aluno está presente (ordem pode variar)
+        $nomes = array_column($recent, 'nome');
+        $this->assertContains('Maria Santos', $nomes);
     }
 
     public function testCreateAlunoWithEmptyName()
