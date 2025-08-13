@@ -39,6 +39,10 @@ docker-compose up -d
 
 # Instalar dependências do Composer
 docker-compose exec app composer install
+
+# Executar migrations e seeds
+docker-compose exec app php migrate.php migrate
+docker-compose exec app php migrate.php seed
 ```
 
 #### 3. Acesse o sistema
@@ -99,6 +103,29 @@ root /caminho/para/projeto/public;
 - Ações rápidas
 - Dados recentes
 
+##  Sistema de Migrations
+
+### Comandos de Migration
+```bash
+# Executar migrations
+php migrate.php migrate
+
+# Executar seeds (dados de exemplo)
+php migrate.php seed
+
+# Recriar banco e executar tudo
+php migrate.php fresh
+```
+
+### Com Docker
+```bash
+# Executar migrations
+docker-compose exec app php migrate.php migrate
+
+# Executar seeds
+docker-compose exec app php migrate.php seed
+```
+
 ### Áreas de Cursos
 - CRUD completo
 - Título (obrigatório)
@@ -120,7 +147,7 @@ root /caminho/para/projeto/public;
 composer test
 ```
 
-Segurança
+##Segurança
 
 - Validação de entrada de dados
 - Proteção contra SQL Injection

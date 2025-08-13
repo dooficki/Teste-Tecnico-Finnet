@@ -1,3 +1,8 @@
+-- Configuração de charset UTF-8
+SET NAMES utf8mb4;
+SET CHARACTER SET utf8mb4;
+SET character_set_connection=utf8mb4;
+
 -- Criação das tabelas para a plataforma de ensino
 
 -- Tabela de áreas de cursos
@@ -7,7 +12,7 @@ CREATE TABLE IF NOT EXISTS areas (
     descricao TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Tabela de alunos
 CREATE TABLE IF NOT EXISTS alunos (
@@ -17,7 +22,7 @@ CREATE TABLE IF NOT EXISTS alunos (
     data_nascimento DATE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Tabela de matrículas
 CREATE TABLE IF NOT EXISTS matriculas (
@@ -31,7 +36,7 @@ CREATE TABLE IF NOT EXISTS matriculas (
     FOREIGN KEY (aluno_id) REFERENCES alunos(id) ON DELETE CASCADE,
     FOREIGN KEY (area_id) REFERENCES areas(id) ON DELETE CASCADE,
     UNIQUE KEY unique_matricula (aluno_id, area_id)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Inserir dados de exemplo
 INSERT INTO areas (titulo, descricao) VALUES

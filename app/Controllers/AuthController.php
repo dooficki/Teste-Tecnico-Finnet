@@ -12,7 +12,7 @@ class AuthController extends BaseController
         
         $this->render('auth/login', [
             'title' => 'Login - Plataforma de Ensino'
-        ]);
+        ], false);
     }
 
     public function login()

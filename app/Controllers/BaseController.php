@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 class BaseController
 {
-    protected function render($view, $data = [])
+    protected function render($view, $data = [], $useLayout = true)
     {
         // Extrair variáveis para a view
         extract($data);
@@ -16,7 +16,20 @@ class BaseController
             ob_start();
             include $viewPath;
             $content = ob_get_clean();
-            echo $content;
+            
+            if ($useLayout) {
+                // Incluir o layout
+                $layoutPath = __DIR__ . "/../Views/layout.php";
+                if (file_exists($layoutPath)) {
+                    // Passar $this para o layout
+                    $controller = $this;
+                    include $layoutPath;
+                } else {
+                    echo $content;
+                }
+            } else {
+                echo $content;
+            }
         } else {
             throw new \Exception("View não encontrada: {$view}");
         }

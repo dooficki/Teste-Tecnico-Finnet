@@ -76,4 +76,17 @@ class Matricula
         $stmt->execute([$limit]);
         return $stmt->fetchAll();
     }
+
+    public function getByAlunoAndArea($aluno_id, $area_id)
+    {
+        $stmt = $this->db->prepare("
+            SELECT m.*, a.nome as aluno_nome, ar.titulo as area_titulo 
+            FROM matriculas m 
+            JOIN alunos a ON m.aluno_id = a.id 
+            JOIN areas ar ON m.area_id = ar.id 
+            WHERE m.aluno_id = ? AND m.area_id = ?
+        ");
+        $stmt->execute([$aluno_id, $area_id]);
+        return $stmt->fetch();
+    }
 } 
