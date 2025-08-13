@@ -13,6 +13,14 @@ class Matricula
         $this->db = Database::getInstance()->getConnection();
     }
 
+    /**
+     * Define conexão customizada (para testes)
+     */
+    public function setConnection($connection)
+    {
+        $this->db = $connection;
+    }
+
     public function getAll()
     {
         $stmt = $this->db->query("
@@ -71,9 +79,9 @@ class Matricula
             JOIN alunos a ON m.aluno_id = a.id 
             JOIN areas ar ON m.area_id = ar.id 
             ORDER BY m.data_matricula DESC 
-            LIMIT ?
-        ");
-        $stmt->execute([$limit]);
+            LIMIT " . (int)$limit
+        );
+        $stmt->execute();
         return $stmt->fetchAll();
     }
 

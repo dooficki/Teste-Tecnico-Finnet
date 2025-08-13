@@ -13,6 +13,14 @@ class Aluno
         $this->db = Database::getInstance()->getConnection();
     }
 
+    /**
+     * Define conexão customizada (para testes)
+     */
+    public function setConnection($connection)
+    {
+        $this->db = $connection;
+    }
+
     public function getAll()
     {
         $stmt = $this->db->query("SELECT * FROM alunos ORDER BY nome");
@@ -61,8 +69,8 @@ class Aluno
 
     public function getRecent($limit = 5)
     {
-        $stmt = $this->db->prepare("SELECT * FROM alunos ORDER BY created_at DESC LIMIT ?");
-        $stmt->execute([$limit]);
+        $stmt = $this->db->prepare("SELECT * FROM alunos ORDER BY created_at DESC LIMIT " . (int)$limit);
+        $stmt->execute();
         return $stmt->fetchAll();
     }
 } 

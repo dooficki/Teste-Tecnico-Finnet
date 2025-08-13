@@ -154,3 +154,31 @@ composer test
 - Autenticação de sessão
 - Escape de dados na saída
 
+## Testes Unitários
+### Executar Testes
+```bash
+# Executar todos os testes
+composer test
+
+# Executar com cobertura de código
+composer test:coverage
+
+# Executar testes específicos
+./vendor/bin/phpunit tests/Unit/AreaTest.php
+```
+
+### Cobertura de Testes
+-  **Modelo Area** - CRUD completo e validações
+-  **Modelo Aluno** - CRUD, busca e validações
+-  **Modelo Matricula** - CRUD, relacionamentos e constraints
+-  **Banco de teste** - Ambiente isolado para testes
+-  **Dados de teste** - Fixtures para cenários diversos
+
+### Cenários Testados
+- Criação, leitura, atualização e exclusão (CRUD)
+- Validações de dados obrigatórios
+- Busca por nome e email (Aluno)
+- Relacionamentos entre entidades
+- Constraints de unicidade
+- Casos de erro e exceções
+
